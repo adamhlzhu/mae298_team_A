@@ -37,9 +37,9 @@ Each branch contains a working folder corresponding to its subsystem. Please wri
 ## Nomenclature
 Please insert the variable name and the definition of the variable here.  
 **IMPORTANT:** Ensure consistency in naming. Always check this table before creating or using a variable — someone may have already defined it. Add any new variable here with a clear description.
-| Variable | Definition | Unit |
-|----------|------------|------|
-| `MTOW`      | Design variable (scalar input) | lbs |
+| Variable | Definition | Unit | Data type |
+|----------|------------|------|-----------|
+| `MTOW`      | Maximum Take-off Weight | lbs | float |
 
 
 --------------------------------
