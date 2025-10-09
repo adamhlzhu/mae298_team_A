@@ -33,3 +33,18 @@ Note: Added "[tool.uv.sources] -/ aviary = {path = "Aviary"}" to the "pyproject.
 
 ## Working folder
 Each branch contains a working folder corresponding to its subsystem. Please write your code and data within the working folder for the part you are responsible for. This structure will make it easier to merge branches into main later and should simplify integrating all subsystems in the future.
+
+## Nomenclature
+Please insert the variable name and the definition of the variable here.  
+**IMPORTANT:** Ensure consistency in naming. Always check this table before creating or using a variable — someone may have already defined it. Add any new variable here with a clear description.
+| Variable | Definition | Unit |
+|----------|------------|------|
+| `MTOW`      | Design variable (scalar input) | lbs |
+
+
+--------------------------------
+
+⚠️ **Guidelines for future updates:**
+- Always keep the variable names consistent across the code and documentation.  
+- Add new rows when introducing new variables or subsystems.  
+- Do not duplicate variables — check the table first.  
