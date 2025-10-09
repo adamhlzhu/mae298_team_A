@@ -9,25 +9,25 @@ Steps:
 Follow the official instructions:
 https://docs.astral.sh/uv/getting-started/installation/
 
-2. Initialize the project (only needed once)
-uv init
-(You can skip this if the repo is already initialized.)
+2. [You can skip this] Initialize the project (only needed once).
+type "uv init" in your terminal.
+(NOTE: You can skip this if the repo is already initialized.)
 
-3. Create/sync the environment from pyproject.toml
-uv sync
+3. Create/sync the environment from pyproject.toml.
+type "uv sync" in your terminal.
 This will create .venv and install all dependencies.
 
 4. Run commands inside the environment
-uv run python --version
-uv run python your_script.py
+type "uv run python --version"
+type "uv run python your_script.py"
 
-5. Add a new package to the project
-uv add PACKAGE_NAME
+5. Add a new package to the project.
+type "uv add PACKAGE_NAME"
 (This updates pyproject.toml and the lockfile, then installs.)
 Always commit both pyproject.toml and uv.lock after adding a new package.
 
 6. Inspect dependencies
-uv tree
+type "uv tree"
 
 Note: Added "[tool.uv.sources] -/ aviary = {path = "Aviary"}" to the "pyproject.toml" to correctly get the "toml" from Aviary file.
 
