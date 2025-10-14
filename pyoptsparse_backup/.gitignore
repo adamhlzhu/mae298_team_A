@@ -1,0 +1,32 @@
+syntax: glob
+
+# Ignore ruff and pre-commit config files
+.pre-commit-config.yaml
+
+build
+doc/_build
+*.pyc
+*.so
+*.out
+*.f
+*.hst
+*.gz
+*.c
+*.cpp
+env
+pyoptsparse/pySNOPT/source
+pyoptsparse/pyNLPQLP/source
+*.egg-info
+
+.idea/
+/meson_build/
+/dist/
+/staging_dir/
+
+*.lib
+
+*.pdb
+
+*.pyd
+
+.DS_Store

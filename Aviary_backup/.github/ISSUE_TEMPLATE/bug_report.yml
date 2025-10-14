@@ -1,0 +1,31 @@
+name: Bug Report
+description: Submit a report only if you believe you've found a bug in Aviary. If you're not sure if your problem is a bug, especially for installation issues, try reaching out on the discussions page first.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Please explain what is happening and how it differs from the expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example
+      description: Please provide an example of the code that triggers the unexpected behavior. If possible, create a complete, minimal test case that reproduces the issue. Alternatively, link to a file in another repository where the issue is demonstrated.
+    validations:
+      required: true
+  - type: input
+    id: aviary-version
+    attributes:
+      label: Aviary Version
+      description: What version of Aviary is being used.
+      placeholder: "0.10.0-dev"
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Relevant environment information
+      description: If applicable, please provide versions of relevant dependencies (numpy, scipy, MPI, etc).  This can be obtained from `pip freeze`.
