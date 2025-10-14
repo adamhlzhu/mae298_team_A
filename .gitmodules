@@ -1,0 +1,6 @@
+[submodule "Aviary"]
+	path = Aviary
+	url = https://github.com/OpenMDAO/Aviary.git
+[submodule "pyoptsparse"]
+	path = pyoptsparse
+	url = https://github.com/mdolab/pyoptsparse.git
