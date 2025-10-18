@@ -47,4 +47,9 @@ Please insert the variable name and the definition of the variable here.
 ⚠️ **Guidelines for future updates:**
 - Always keep the variable names consistent across the code and documentation.  
 - Add new rows when introducing new variables or subsystems.  
-- Do not duplicate variables — check the table first.  
+- Do not duplicate variables — check the table first.
+
+## Issues with UV and getting Aviary to run
+One solution was to run the associated commands:
+- .venv\Scripts\activate
+- uv sync
