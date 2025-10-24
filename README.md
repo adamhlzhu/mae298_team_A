@@ -53,3 +53,11 @@ Please insert the variable name and the definition of the variable here.
 One solution was to run the associated commands:
 - .venv\Scripts\activate
 - uv sync
+
+
+
+## Conda Requirement.txt 
+
+```
+conda create -n <environment-name> --file requirements.txt
+```
