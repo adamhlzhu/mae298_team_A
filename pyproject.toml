@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "aviary",
+    "pyoptsparse",
     "dymos>=1.15.0",
     "matplotlib>=3.10.6",
     "numpy>=2.3.3",
@@ -15,4 +16,5 @@ dependencies = [
 ]
 
 [tool.uv.sources]
+pyoptsparse = { path = "pyoptsparse"}
 aviary = {path = "Aviary"}
