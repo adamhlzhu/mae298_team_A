@@ -13,7 +13,8 @@ limited to 50 iterations are included to demonstrate of how those common setting
 """
 
 # from bwb_phase_info import phase_info
-from two_dof_default_Alex import phase_info
+# from two_dof_default_Alex import phase_info #This is Alex's version which works and runs an optimized output. 
+from two_dof_default_altitude_opt import phase_info
 
 import aviary.api as av
 
