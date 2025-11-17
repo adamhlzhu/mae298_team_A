@@ -2,7 +2,7 @@ from aviary.variable_info.enums import SpeedType
 from aviary.variable_info.variables import Mission
 
 # defaults for 2DOF based phases
-mission_distance = 3675
+mission_distance = 350
 
 phase_info = {
     'groundroll': {
@@ -159,7 +159,7 @@ phase_info = {
             'order': 3,
             'EAS_target': (270, 'kn'),
             'mach_cruise': 0.8,
-            'target_mach': True,
+            'target_mach': False,
             'required_available_climb_rate': (0.1, 'ft/min'),
             'time_duration_bounds': ((200, 17_000), 's'),
             'time_duration_ref': (5000, 's'),
@@ -216,7 +216,7 @@ phase_info = {
             'mass_ref': (140_000, 'lbm'),
             'mass_ref0': (0, 'lbm'),
             'mass_defect_ref': (140_000, 'lbm'),
-            'distance_bounds': ((3000.0, 5000.0), 'NM'),
+            'distance_bounds': ((0, mission_distance), 'NM'),
             'distance_ref': (mission_distance, 'NM'),
             'distance_ref0': (0, 'NM'),
             'distance_defect_ref': (100, 'NM'),
@@ -247,15 +247,15 @@ phase_info = {
             'mass_bounds': ((0, None), 'lbm'),
             'mass_ref': (150_000, 'lbm'),
             'mass_defect_ref': (150_000, 'lbm'),
-            'distance_bounds': ((0.0, 5000.0), 'NM'),
-            'distance_ref': (3500, 'NM'),
+            'distance_bounds': ((0.0, mission_distance), 'NM'),
+            'distance_ref': (mission_distance, 'NM'),
             'distance_defect_ref': (100, 'NM'),
         },
         'initial_guesses': {
             'mass': (136000.0, 'lbm'),
             'altitude': ([10.0e3, 1.0e3], 'ft'),
             'throttle': ([0.0, 0.0], 'unitless'),
-            'distance': ([0.96 * mission_distance, mission_distance], 'NM'),
+            'distance': ([0.95 * mission_distance, 0.99*mission_distance], 'NM'),
             'time': ([28500.0, 500.0], 's'),
         },
     },

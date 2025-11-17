@@ -12,7 +12,8 @@ methods have optional arguments, but none are necessary here. The selection of t
 limited to 50 iterations are included to demonstrate of how those common settings are set.
 """
 
-from aviary.models.missions.two_dof_default import phase_info
+# from bwb_phase_info import phase_info
+from two_dof_default_Alex import phase_info
 
 import aviary.api as av
 
@@ -20,15 +21,17 @@ prob = av.AviaryProblem()
 
 # Load aircraft and options data from provided sources
 prob.load_inputs(
-    'Aviary\aviary\models\aircraft\blended_wing_body\generic_BWB_GASP.csv', phase_info
+    r'modified_BWB_GASP.csv', phase_info
 )
 
 prob.check_and_preprocess_inputs()
 
 prob.build_model()
 
+
+
 # optimizer and iteration limit are optional provided here
-prob.add_driver('IPOPT', max_iter=50)
+prob.add_driver('IPOPT', max_iter=100)
 
 prob.add_design_variables()
 
@@ -36,4 +39,8 @@ prob.add_objective()
 
 prob.setup()
 
+# prob.run_model()
+
 prob.run_aviary_problem()
+
+print(prob.get_val(av.Mission.Summary.FUEL_BURNED, units='lb')[0])

@@ -6,7 +6,7 @@ aircraft:air_conditioning:mass_coefficient,1.155,unitless
 aircraft:anti_icing:mass,236,lbm
 aircraft:apu:mass,710,lbm
 aircraft:avionics:mass,3225,lbm
-aircraft:blended_wing_body_design:passenger_leading_edge_sweep,65,deg
+aircraft:blended_wing_body_design:passenger_leading_edge_sweep,69,deg
 aircraft:controls:cockpit_control_mass_scaler,1,unitless
 aircraft:controls:control_mass_increment,0,lbm
 aircraft:controls:stability_augmentation_system_mass,0,lbm
@@ -130,7 +130,7 @@ aircraft:wing:has_strut,False,unitless
 aircraft:wing:height,12.5,ft
 aircraft:wing:high_lift_mass_coefficient,1,unitless
 aircraft:wing:incidence,1.5,deg
-aircraft:design:wing_loading,70,lbf/ft**2
+aircraft:design:wing_loading,55,lbf/ft**2
 aircraft:wing:mass_coefficient,75.78,unitless
 aircraft:wing:max_lift_ref,1.45,unitless
 aircraft:wing:max_slat_deflection_landing,0,deg
@@ -150,9 +150,9 @@ aircraft:wing:thickness_to_chord_tip,0.1,unitless
 aircraft:wing:vertical_mount_location,0.5,unitless
 aircraft:wing:zero_lift_angle,0,deg
 mission:design:cruise_altitude,41000,ft
-mission:design:gross_mass,150000,lbm
+mission:design:gross_mass,120000,lbm
 mission:design:mach,0.8,unitless
-mission:design:range,3500,NM
+mission:design:range,350,NM
 mission:design:rate_of_climb_at_top_of_climb,300,ft/min
 mission:landing:airport_altitude,0,ft
 mission:landing:braking_delay,1,s
