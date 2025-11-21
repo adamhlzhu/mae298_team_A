@@ -1,0 +1,11 @@
+{
+ "Problem": "bwb_example",
+ "Script": "bwb_example.py",
+ "Optimizer": "pyOptSparse_IPOPT",
+ "Number of driver iterations": 31,
+ "Number of model evals": 32,
+ "Number of deriv evals": 30,
+ "Wall clock run time": "00 hours 00 minutes 50 seconds 742.3 milliseconds",
+ "Exit status": "SUCCESS",
+ "Report generation date and time": "2025-11-20 22:52:05 "
+}
