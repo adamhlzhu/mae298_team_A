@@ -15,6 +15,7 @@ limited to 50 iterations are included to demonstrate of how those common setting
 # from bwb_phase_info import phase_info
 # from two_dof_default_Alex import phase_info #This is Alex's version which works and runs an optimized output. 
 from two_dof_default_altitude_opt import phase_info
+from aviary.variable_info.variables import Mission
 
 import aviary.api as av
 
@@ -36,12 +37,22 @@ prob.add_driver('IPOPT', max_iter=100)
 
 prob.add_design_variables()
 
+#New variable being added
+prob.add_design_var_default(
+    name='traj.cruise.parameters:altitude',  # phase-level altitude
+    lower=10000.0,
+    upper=40000.0,
+    units='ft',
+    default_val=25000.0,
+    ref=25000.0
+)
+
 prob.add_objective()
 
 prob.setup()
 
-# prob.run_model()
 
 prob.run_aviary_problem()
 
 print(prob.get_val(av.Mission.Summary.FUEL_BURNED, units='lb')[0])
+print(prob.get_val(av.Mission.Summary.FINAL_TIME, units='s')[0])
