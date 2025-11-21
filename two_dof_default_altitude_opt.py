@@ -163,7 +163,7 @@ phase_info = {
             'required_available_climb_rate': (0.1, 'ft/min'),
             'time_duration_bounds': ((200, 17_000), 's'),
             'time_duration_ref': (5000, 's'),
-            'altitude_final': (37.5e3, 'ft'),
+            #'altitude_final': (37.5e3, 'ft'),
             'altitude_bounds': ((9000.0, 40000.0), 'ft'),
             'altitude_ref': (30000, 'ft'),
             'altitude_ref0': (0, 'ft'),
@@ -185,7 +185,7 @@ phase_info = {
     'cruise': {
         'subsystem_options': {'core_aerodynamics': {'method': 'cruise'}},
         'user_options': {
-            'alt_cruise': (37.5e3, 'ft'),
+            #'alt_cruise': (37.5e3, 'ft'),
             'mach_cruise': 0.8,
         },
         'initial_guesses': {
