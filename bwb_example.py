@@ -41,7 +41,7 @@ prob.add_design_variables()
 prob.add_design_var_default(
     name='traj.cruise.parameters:altitude',  # phase-level altitude
     lower=10000.0,
-    upper=40000.0,
+    upper=42000.0,
     units='ft',
     default_val=25000.0,
     ref=25000.0
@@ -54,5 +54,5 @@ prob.setup()
 
 prob.run_aviary_problem()
 
-print(prob.get_val(av.Mission.Summary.FUEL_BURNED, units='lb')[0])
-print(prob.get_val(av.Mission.Summary.FINAL_TIME, units='s')[0])
+print("Fuel Burn [lbs]:", prob.get_val(av.Mission.Summary.FUEL_BURNED, units='lb')[0])
+print("Time in flight [s]", prob.get_val(av.Mission.Summary.FINAL_TIME, units='s')[0])
