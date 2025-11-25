@@ -1,0 +1,6 @@
+These are the instructions to run the altitude or mach optimization and 
+add it to your functioning document. 
+
+First, in the original GASP file:
+Either copy modified_BWB_GASP.csv
+Or adjust the following values
