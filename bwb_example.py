@@ -55,4 +55,6 @@ prob.setup()
 prob.run_aviary_problem()
 
 print("Fuel Burn [lbs]:", prob.get_val(av.Mission.Summary.FUEL_BURNED, units='lb')[0])
-print("Time in flight [s]", prob.get_val(av.Mission.Summary.FINAL_TIME, units='s')[0])
+print("Time in flight [s]: ", prob.get_val(av.Mission.Summary.FINAL_TIME, units='s')[0])
+print("Cruise Altitude [ft]: ", prob.get_val('traj.cruise.parameters:altitude', units='ft')[0])
+print("Cruise Mach [unitless]: ", prob.get_val('traj.cruise.parameters:mach', units='unitless')[0])
