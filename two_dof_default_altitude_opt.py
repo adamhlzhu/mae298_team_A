@@ -185,7 +185,7 @@ phase_info = {
     'cruise': {
         'subsystem_options': {'core_aerodynamics': {'method': 'cruise'}},
         'user_options': {
-            'alt_cruise': (37.5e3, 'ft'),
+            # 'alt_cruise': (37.5e3, 'ft'),
             'mach_cruise': 0.75,
         },
         'initial_guesses': {
