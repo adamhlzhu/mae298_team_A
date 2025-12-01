@@ -336,3 +336,28 @@ def phase_info_parameterization(phase_info, post_mission_info, aviary_inputs):
         phase_info['cruise']['initial_guesses']['mach'] = (mach_cruise, 'unitless')
 
     return phase_info, post_mission_info
+
+def add_phase_param(phase_info, phase_name, section, key, value):
+    """
+    Add or update a parameter in a phase dictionary.
+
+    Parameters
+    ----------
+    phase_info : dict
+        The full mission phases dict.
+    phase_name : str
+        The phase to modify, e.g., 'climb2' or 'cruise'.
+    section : str
+        Which section to modify: 'user_options', 'initial_guesses', or 'subsystem_options'
+    key : str
+        The name of the parameter to add.
+    value : any
+        The value, including unit tuple if needed.
+    """
+    if phase_name not in phase_info:
+        raise KeyError(f"Phase '{phase_name}' not found.")
+
+    if section not in phase_info[phase_name]:
+        raise KeyError(f"Section '{section}' not found in phase '{phase_name}'.")
+
+    phase_info[phase_name][section][key] = value
