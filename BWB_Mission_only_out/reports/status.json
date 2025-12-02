@@ -1,0 +1,11 @@
+{
+ "Problem": "BWB_Mission_only",
+ "Script": "c:/Users/BIRD_Huanglun_Zhu/Documents/GitHub/mae298_team_A/BWB_Mission_only",
+ "Optimizer": "pyOptSparse_IPOPT",
+ "Number of driver iterations": 54,
+ "Number of model evals": 55,
+ "Number of deriv evals": 46,
+ "Wall clock run time": "00 hours 01 minutes 01 seconds 18.3 milliseconds",
+ "Exit status": "SUCCESS",
+ "Report generation date and time": "2025-12-01 17:39:02 "
+}

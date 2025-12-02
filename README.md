@@ -53,3 +53,16 @@ Please insert the variable name and the definition of the variable here.
 One solution was to run the associated commands:
 - .venv\Scripts\activate
 - uv sync
+
+
+
+## Comparison plotting
+1. Baseline, without any optimization but change the mission and passanger for BWB
+2. Structure only (needed)
+2. Mission only
+3. Propulsion only
+4. Propulsion + Mission + Structure
+
+5. Aerodynamic only (needed)
+
+Extra: Propulsion + Mission + Structure with 2, 3, 4, 5 number of engine. 

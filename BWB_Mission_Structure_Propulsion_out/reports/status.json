@@ -1,0 +1,11 @@
+{
+ "Problem": "BWB_Mission_Structure_Propulsion",
+ "Script": "c:/Users/BIRD_Huanglun_Zhu/Documents/GitHub/mae298_team_A/BWB_Mission_Structure_Propulsion.py",
+ "Optimizer": "pyOptSparse_IPOPT",
+ "Number of driver iterations": 180,
+ "Number of model evals": 181,
+ "Number of deriv evals": 139,
+ "Wall clock run time": "00 hours 03 minutes 30 seconds 490.2 milliseconds",
+ "Exit status": "SUCCESS",
+ "Report generation date and time": "2025-12-02 11:44:18 "
+}
