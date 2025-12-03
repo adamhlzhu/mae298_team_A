@@ -13,8 +13,8 @@ limited to 50 iterations are included to demonstrate of how those common setting
 """
 
 # from bwb_phase_info import phase_info
-# from two_dof_default_Alex import phase_info #This is Alex's version which works and runs an optimized output. 
-from two_dof_default_altitude_opt import phase_info
+from two_dof_default_Alex import phase_info #This is Alex's version which works and runs an optimized output. 
+# from two_dof_default_altitude_opt import phase_info
 from aviary.variable_info.variables import Mission
 
 import aviary.api as av
@@ -38,14 +38,14 @@ prob.add_driver('IPOPT', max_iter=100)
 prob.add_design_variables()
 
 #New variable being added
-prob.add_design_var_default(
-    name='traj.cruise.parameters:altitude',  # phase-level altitude
-    lower=10000.0,
-    upper=42000.0,
-    units='ft',
-    default_val=25000.0,
-    ref=25000.0
-)
+# prob.add_design_var_default(
+#     name='traj.cruise.parameters:altitude',  # phase-level altitude
+#     lower=10000.0,
+#     upper=42000.0,
+#     units='ft',
+#     default_val=25000.0,
+#     ref=25000.0
+# )
 
 prob.add_objective()
 
@@ -58,3 +58,29 @@ print("Fuel Burn [lbs]:", prob.get_val(av.Mission.Summary.FUEL_BURNED, units='lb
 print("Time in flight [s]: ", prob.get_val(av.Mission.Summary.FINAL_TIME, units='s')[0])
 print("Cruise Altitude [ft]: ", prob.get_val('traj.cruise.parameters:altitude', units='ft')[0])
 print("Cruise Mach [unitless]: ", prob.get_val('traj.cruise.parameters:mach', units='unitless')[0])
+
+import csv
+import os
+
+# File name
+csv_file = "mission_sweep_results.csv"
+
+# Values you want to record
+fuel_burn   = prob.get_val(av.Mission.Summary.FUEL_BURNED, units='lb')[0]
+flight_time = prob.get_val(av.Mission.Summary.FINAL_TIME, units='s')[0]
+cruise_alt  = prob.get_val('traj.cruise.parameters:altitude', units='ft')[0]
+cruise_mach = prob.get_val('traj.cruise.parameters:mach', units='unitless')[0]
+
+# Check if file exists to know whether to write the header
+write_header = not os.path.exists(csv_file)
+
+with open(csv_file, "a", newline="") as f:
+    writer = csv.writer(f)
+
+    # First time → write header
+    if write_header:
+        writer.writerow(["fuel_burn_lb", "flight_time_s", "cruise_alt_ft", "cruise_mach"])
+
+    # Append a new row each run
+    writer.writerow([fuel_burn, flight_time, cruise_alt, cruise_mach])
+print("Done Writing")
