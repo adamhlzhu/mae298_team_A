@@ -158,13 +158,13 @@ phase_info = {
             'num_segments': 3,
             'order': 3,
             'EAS_target': (270, 'kn'),
-            'mach_cruise': 0.8,
+            'mach_cruise': 0.74,
             'target_mach': False,
             'required_available_climb_rate': (0.1, 'ft/min'),
             'time_duration_bounds': ((200, 17_000), 's'),
             'time_duration_ref': (5000, 's'),
-            'altitude_final': (37.5e3, 'ft'),
-            'altitude_bounds': ((9000.0, 40000.0), 'ft'),
+            'altitude_final': (40.0e3, 'ft'),
+            'altitude_bounds': ((9000.0, 42000.0), 'ft'),
             'altitude_ref': (30000, 'ft'),
             'altitude_ref0': (0, 'ft'),
             'mass_bounds': ((0, None), 'lbm'),
@@ -185,16 +185,16 @@ phase_info = {
     'cruise': {
         'subsystem_options': {'core_aerodynamics': {'method': 'cruise'}},
         'user_options': {
-            'alt_cruise': (37.5e3, 'ft'),
-            'mach_cruise': 0.8,
+            'alt_cruise': (40.0e3, 'ft'),
+            'mach_cruise': 0.74,
         },
         'initial_guesses': {
             # [Initial mass, delta mass] for special cruise phase.
             'mass': ([171481.0, -35000], 'lbm'),
             'initial_distance': (200.0e3, 'ft'),
             'initial_time': (1516.0, 's'),
-            'altitude': (37.5e3, 'ft'),
-            'mach': (0.8, 'unitless'),
+            'altitude': (40.0e3, 'ft'),
+            'mach': (0.74, 'unitless'),
         },
     },
     'desc1': {
