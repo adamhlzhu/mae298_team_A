@@ -1,0 +1,11 @@
+{
+ "Problem": "BWB_Propulsion_only",
+ "Script": "c:/Users/BIRD_Huanglun_Zhu/Documents/GitHub/mae298_team_A/BWB_Propulsion_only.py",
+ "Optimizer": "pyOptSparse_IPOPT",
+ "Number of driver iterations": 98,
+ "Number of model evals": 99,
+ "Number of deriv evals": 70,
+ "Wall clock run time": "00 hours 01 minutes 31 seconds 451.5 milliseconds",
+ "Exit status": "SUCCESS",
+ "Report generation date and time": "2025-12-03 20:27:02 "
+}

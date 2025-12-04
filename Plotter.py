@@ -147,6 +147,8 @@ if __name__ == "__main__":
     Mission_only_file_path = 'BWB_Mission_only_out/reports/mission_timeseries_data.csv'
     Mission_Structure_file_path = 'BWB_Mission_Structure_out/reports/mission_timeseries_data.csv'
     Mission_Structure_Propulsion_file_path = 'BWB_Mission_Structure_Propulsion_out/reports/mission_timeseries_data.csv'
+    Structure_only_file_path = 'BWB_Structure_only_out/reports/mission_timeseries_data.csv'
+    Propulsion_only_file_path = 'BWB_Propulsion_only_out/reports/mission_timeseries_data.csv'
 
     # Engine:
     Combined_all_with_2_engine_file_path = Mission_Structure_Propulsion_file_path
@@ -162,18 +164,37 @@ if __name__ == "__main__":
         # If you want each comparison plot separately, comment the following lines one by one:
         baseline_df = file_loader(baseline_file_path)
         Mission_only_df = file_loader(Mission_only_file_path)
+        Structure_only_df = file_loader(Structure_only_file_path)
+        Propulsion_only_df = file_loader(Propulsion_only_file_path)
         Mission_Propulsion_df = file_loader(Mission_Propulsion_file_path)
         Mission_Structure_df = file_loader(Mission_Structure_file_path)
         Mission_Structure_Propulsion_df = file_loader(Mission_Structure_Propulsion_file_path)
 
-        dfs = [baseline_df, Mission_only_df, Mission_Propulsion_df, Mission_Structure_df, Mission_Structure_Propulsion_df]
-        labels = ["Baseline", "Mission only", "Mission + Propulsion", "Mission + Structure", "Mission + Structure + Propulsion"]
+
+        dfs = [baseline_df, 
+               Mission_only_df, 
+               Structure_only_df,
+               Propulsion_only_df, 
+               # Mission_Propulsion_df, 
+               # Mission_Structure_df, 
+               Mission_Structure_Propulsion_df
+               ]
+        labels = ["Baseline", 
+                  "Mission only", 
+                  "Structure only", 
+                  "Propulsion only",
+                  # "Mission + Propulsion", 
+                  # "Mission + Structure", 
+                  "Mission + Structure + Propulsion"
+                  ]
         # The first style is always for Baseline, which defined as black solid line in the function code, so we only need styles for the others but not the first one
         styles = [
                 {"color": "#1b9e77", "linestyle": "--", "linewidth": 2.0, "alpha": 0.85},  # Mission only
-                {"color": "#d95f02", "linestyle": "--", "linewidth": 2.0, "alpha": 0.85},  # Mission + Propulsion
-                {"color": "#7570b3", "linestyle": "--", "linewidth": 2.0, "alpha": 0.85},  # Mission + Structure
-                {"color": "#e7298a", "linestyle": "--", "linewidth": 2.0, "alpha": 0.85},  # Mission + Structure + Propulsion
+                {"color": "#e6ab02", "linestyle": "--", "linewidth": 2.0, "alpha": 0.85},  # Structure only
+                {"color": "#7570b3", "linestyle": "--", "linewidth": 2.0, "alpha": 0.85},  # Propulsion only
+                # {"color": "#d95f02", "linestyle": "--", "linewidth": 2.0, "alpha": 0.85},  # Mission + Propulsion
+                # {"color": "#7570b3", "linestyle": "--", "linewidth": 2.0, "alpha": 0.85},  # Mission + Structure
+                {"color": "#e7298a", "linestyle": "-", "linewidth": 2.0, "alpha": 1},  # Mission + Structure + Propulsion
             ]
         mission_plotter_multi(dfs, labels=labels, styles=styles, save_folder_path=plot_save_folder, engine_counts=None)
 

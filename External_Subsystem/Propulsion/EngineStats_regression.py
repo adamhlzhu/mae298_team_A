@@ -63,7 +63,7 @@ def fit_mass_regression(df, thrust_col='Takeoff Thrust [lbf]', mass_col='Dry Mas
         'a': a, 'b': b, 'r2': r2,
         'formula': f"m = {a:.4g} * T^{b:.4g}"
     }
-    return info, pred
+    return info, pred, r2
 
 
 def fit_tsfc_regression(df,
@@ -116,7 +116,7 @@ def fit_tsfc_regression(df,
 
     return info, pred
 
-def plot_thrust_vs_mass_actual_vs_predicted(df, mass_predictor,
+def plot_thrust_vs_mass_actual_vs_predicted(df, mass_predictor, r2_value,
                                          thrust_col='Takeoff Thrust [lbf]',
                                          mass_col='Dry Mass [lb]'):
     import matplotlib.pyplot as plt
@@ -126,28 +126,35 @@ def plot_thrust_vs_mass_actual_vs_predicted(df, mass_predictor,
 
     Thrust = df[thrust_col].values
     actual_mass = df[mass_col].values
-    predicted_mass = mass_predictor(Thrust)
+    
+    # Sort thrust for smooth line plot
+    sorted_indices = np.argsort(Thrust)
+    Thrust_sorted = Thrust[sorted_indices]
+    predicted_mass_sorted = mass_predictor(Thrust_sorted)
 
     plt.figure(figsize=(10,6))
     plt.scatter(Thrust, actual_mass, label='Actual Mass', color='blue', alpha=0.6)
-    plt.scatter(Thrust, predicted_mass, label='Predicted Mass', color='red', alpha=0.6)
+    plt.plot(Thrust_sorted, predicted_mass_sorted, label='Predicted Mass', color='red', linewidth=2)
     plt.xscale('log')
     plt.yscale('log')
     plt.xlabel('Takeoff Thrust [lbf]')
     plt.ylabel('Dry Mass [lb]')
     plt.title('Thrust vs Dry Mass: Actual vs Predicted')
-    plt.legend()
-    plt.grid(True, which="both", ls="-")
+    plt.legend(loc='lower right')
+    plt.text(0.05, 0.95, f"$R^2$ = {r2_value:.4f}", 
+             transform=plt.gca().transAxes, fontsize=12, verticalalignment='top',
+             bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+    plt.savefig(folder_path + 'thrust_vs_mass_regression.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 if __name__ == "__main__":
-    folder_path = "Subsystem\Propulsion\\"
+    folder_path = "External_Subsystem/Propulsion/"
     df = pd.read_csv(folder_path + "TurboFans_Performance_database.csv", encoding="latin1")
 
     # 1. Mass regression
-    mass_info, mass_predictor = fit_mass_regression(df)
+    mass_info, mass_predictor, mass_r2 = fit_mass_regression(df)
     print(mass_info)
-    # plot_thrust_vs_mass_actual_vs_predicted(df, mass_predictor)
+    plot_thrust_vs_mass_actual_vs_predicted(df, mass_predictor, mass_r2)
 
     # 2. TSFC regression
     tsfc_info, tsfc_pred = fit_tsfc_regression(
