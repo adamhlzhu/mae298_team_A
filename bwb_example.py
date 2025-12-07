@@ -59,28 +59,28 @@ print("Time in flight [s]: ", prob.get_val(av.Mission.Summary.FINAL_TIME, units=
 print("Cruise Altitude [ft]: ", prob.get_val('traj.cruise.parameters:altitude', units='ft')[0])
 print("Cruise Mach [unitless]: ", prob.get_val('traj.cruise.parameters:mach', units='unitless')[0])
 
-import csv
-import os
+# import csv
+# import os
 
-# File name
-csv_file = "mission_sweep_results.csv"
+# # File name
+# csv_file = "mission_sweep_results.csv"
 
-# Values you want to record
-fuel_burn   = prob.get_val(av.Mission.Summary.FUEL_BURNED, units='lb')[0]
-flight_time = prob.get_val(av.Mission.Summary.FINAL_TIME, units='s')[0]
-cruise_alt  = prob.get_val('traj.cruise.parameters:altitude', units='ft')[0]
-cruise_mach = prob.get_val('traj.cruise.parameters:mach', units='unitless')[0]
+# # Values you want to record
+# fuel_burn   = prob.get_val(av.Mission.Summary.FUEL_BURNED, units='lb')[0]
+# flight_time = prob.get_val(av.Mission.Summary.FINAL_TIME, units='s')[0]
+# cruise_alt  = prob.get_val('traj.cruise.parameters:altitude', units='ft')[0]
+# cruise_mach = prob.get_val('traj.cruise.parameters:mach', units='unitless')[0]
 
-# Check if file exists to know whether to write the header
-write_header = not os.path.exists(csv_file)
+# # Check if file exists to know whether to write the header
+# write_header = not os.path.exists(csv_file)
 
-with open(csv_file, "a", newline="") as f:
-    writer = csv.writer(f)
+# with open(csv_file, "a", newline="") as f:
+#     writer = csv.writer(f)
 
-    # First time → write header
-    if write_header:
-        writer.writerow(["fuel_burn_lb", "flight_time_s", "cruise_alt_ft", "cruise_mach"])
+#     # First time → write header
+#     if write_header:
+#         writer.writerow(["fuel_burn_lb", "flight_time_s", "cruise_alt_ft", "cruise_mach"])
 
-    # Append a new row each run
-    writer.writerow([fuel_burn, flight_time, cruise_alt, cruise_mach])
-print("Done Writing")
+#     # Append a new row each run
+#     writer.writerow([fuel_burn, flight_time, cruise_alt, cruise_mach])
+# print("Done Writing")
