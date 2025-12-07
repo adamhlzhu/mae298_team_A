@@ -186,7 +186,7 @@ phase_info = {
         'subsystem_options': {'core_aerodynamics': {'method': 'cruise'}},
         'user_options': {
             # 'alt_cruise': (37.5e3, 'ft'),
-            'mach_cruise': 0.75,
+            #'mach_cruise': 0.75,
         },
         'initial_guesses': {
             # [Initial mass, delta mass] for special cruise phase.
@@ -203,7 +203,7 @@ phase_info = {
             'num_segments': 3,
             'order': 3,
             'EAS_limit': (350, 'kn'),
-            'mach_cruise': 0.8,
+            'mach_cruise': 0.74,
             'input_speed_type': SpeedType.MACH,
             'time_duration_bounds': ((300.0, 900.0), 's'),
             'time_duration_ref': (1000, 's'),
