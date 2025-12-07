@@ -40,8 +40,8 @@ handles, labels = plt.gca().get_legend_handles_labels()
 by_label = dict(zip(labels, handles))
 plt.legend(by_label.values(), by_label.keys(), fontsize=9, loc="best")
 
-plt.plot(FB_star, FT_star, marker="*", markersize=18, color="red", label="Optimized Trajectory")
-plt.legend()
+# plt.plot(FB_star, FT_star, marker="*", markersize=18, color="red", label="Optimized Trajectory")
+# plt.legend()
 
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
@@ -60,7 +60,7 @@ pivot = df.pivot_table(
 
 
 plt.figure(figsize=(10, 8))
-im = plt.imshow(pivot, aspect="auto", origin="lower")
+im = plt.imshow(pivot, aspect="auto", origin="lower", cmap="viridis_r")
 
 # Label ticks using actual alt & mach values
 plt.xticks(
