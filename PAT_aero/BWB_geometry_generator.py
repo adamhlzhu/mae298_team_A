@@ -3,6 +3,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 from PAT.geometry import Point, HybridLoop, SplineSurface, Model
 from PAT.utils import Airfoil, VspFile
+from itertools import product
+import pandas as pd
 
 
 def define_and_generate_BWB(
@@ -20,9 +22,9 @@ def define_and_generate_BWB(
     wing_taper: float = 0.6, # (unitless)
     wing_twist: float = -1, # (degrees/foot)
     wing_alpha: float = 2, # root incidence (degrees)
-    wing_height: float = 10, # (feet)
+    wing_height: float = 6, # (feet)
     wing_x: float = 45, # (feet)
-    stabilizer_cant: float = 25, # (degrees)
+    stabilizer_cant: float = 45, # (degrees)
     stabilizer_croot: float = 10, # (feet)
     stabilizer_taper: float = 0.6, # (unitless)
     stabilizer_length: float = 12, # (feet)
@@ -100,7 +102,7 @@ def define_and_generate_BWB(
         "tail")
 
     pt_stabroot_le = Point(
-        pt_tail.x - 25,
+        pt_tail.x - 15,
         pt_tail.y + 10,
         pt_tail.z,
         "stabroot_le")
@@ -139,13 +141,13 @@ def define_and_generate_BWB(
         pt_stabroot_le,
         pt_stabtip_le,
         pt_stabtip_te,
-        pt_stabroot_te
+        pt_stabroot_te,
     ]
     lstab_points = [
         pt_stabroot_le.reflect_y(),
-        pt_stabtip_le.reflect_y(),
+        pt_stabroot_te.reflect_y(),
         pt_stabtip_te.reflect_y(),
-        pt_stabroot_te.reflect_y()
+        pt_stabtip_le.reflect_y(),
     ]
 
     wing_loop = HybridLoop(wing_points)
@@ -171,11 +173,6 @@ def define_and_generate_BWB(
     lstab_loop.set_smooth("stabtip_le (reflected)", [0, 0, 0])
     lstab_loop.set_smooth("stabtip_te (reflected)", [0, 0, 0])
 
-    # Get slices of the loop
-    wing_slices = wing_loop.get_slices(slice_density=2.0)
-    rstab_slices = rstab_loop.get_slices(slice_density=2.0)
-    lstab_slices = lstab_loop.get_slices(slice_density=2.0)
-
     # Generate and plot the 3D loop
     ax = wing_loop.plot(show_tangents=True)
     ax = rstab_loop.plot(show_tangents=True)
@@ -186,8 +183,8 @@ def define_and_generate_BWB(
 
     # Create the wings
     wing_surface = SplineSurface(name="Wing", loop=wing_loop, default_section_density=0.35)
-    rstab_surface = SplineSurface(name="R_Stab", loop=rstab_loop, default_section_density=0.35)
-    lstab_surface = SplineSurface(name="L_Stab", loop=lstab_loop, default_section_density=0.35)
+    rstab_surface = SplineSurface(name="R_Stab", loop=rstab_loop, default_section_density=0.55)
+    lstab_surface = SplineSurface(name="L_Stab", loop=lstab_loop, default_section_density=0.55)
     chord = np.sqrt(fuselage_length**2 + tail_height**2)
     naca2412 = Path('airfoils/NACA2412.dat')
     naca0012 = Path('airfoils/NACA0012.dat')
@@ -206,56 +203,56 @@ def define_and_generate_BWB(
     lstab_surface.set_airfoil_at_control_point(0, symm_af)
     lstab_surface.calc_sectioned_geometry()
 
-    # Calculate the points for plotting.
-    le_pts, _, te_pts = wing_surface.calc_plot_points()
-    le_pts_rstab, _, te_pts_rstab = rstab_surface.calc_plot_points()
-    le_pts_lstab, _, te_pts_lstab = lstab_surface.calc_plot_points()
+    # # Calculate the points for plotting.
+    # le_pts, _, te_pts = wing_surface.calc_plot_points()
+    # le_pts_rstab, _, te_pts_rstab = rstab_surface.calc_plot_points()
+    # le_pts_lstab, _, te_pts_lstab = lstab_surface.calc_plot_points()
 
-    # Plot the resulting surface.
-    fig = plt.figure(figsize=(10, 8))
-    ax = fig.add_subplot(111, projection='3d')
+    # # Plot the resulting surface.
+    # fig = plt.figure(figsize=(10, 8))
+    # ax = fig.add_subplot(111, projection='3d')
 
-    # Plot LE and TE
-    ax.plot(le_pts[0], le_pts[1], le_pts[2], 'r-', label='Wing Leading Edge')
-    ax.plot(te_pts[0], te_pts[1], te_pts[2], 'b-', label='Wing Trailing Edge')
-    ax.plot(le_pts_rstab[0], le_pts_rstab[1], le_pts_rstab[2], 'r-', label='R_Stab Leading Edge')
-    ax.plot(te_pts_rstab[0], te_pts_rstab[1], te_pts_rstab[2], 'b-', label='R_Stab Trailing Edge')
-    ax.plot(le_pts_lstab[0], le_pts_lstab[1], le_pts_lstab[2], 'r-', label='L_Stab Leading Edge')
-    ax.plot(te_pts_lstab[0], te_pts_lstab[1], te_pts_lstab[2], 'b-', label='L_Stab Trailing Edge')
+    # # Plot LE and TE
+    # ax.plot(le_pts[0], le_pts[1], le_pts[2], 'r-', label='Wing Leading Edge')
+    # ax.plot(te_pts[0], te_pts[1], te_pts[2], 'b-', label='Wing Trailing Edge')
+    # ax.plot(le_pts_rstab[0], le_pts_rstab[1], le_pts_rstab[2], 'r-', label='R_Stab Leading Edge')
+    # ax.plot(te_pts_rstab[0], te_pts_rstab[1], te_pts_rstab[2], 'b-', label='R_Stab Trailing Edge')
+    # ax.plot(le_pts_lstab[0], le_pts_lstab[1], le_pts_lstab[2], 'r-', label='L_Stab Leading Edge')
+    # ax.plot(te_pts_lstab[0], te_pts_lstab[1], te_pts_lstab[2], 'b-', label='L_Stab Trailing Edge')
 
-    # Plot chord lines
-    for i in range(len(le_pts[0])):
-        ax.plot(
-            [le_pts[0][i], te_pts[0][i]], 
-            [le_pts[1][i], te_pts[1][i]],
-            [le_pts[2][i], te_pts[2][i]],
-            'g--',
-            alpha=0.5
-            )
-    for i in range(len(le_pts_rstab[0])):
-        ax.plot(
-            [le_pts_rstab[0][i], te_pts_rstab[0][i]], 
-            [le_pts_rstab[1][i], te_pts_rstab[1][i]],
-            [le_pts_rstab[2][i], te_pts_rstab[2][i]],
-            'g--',
-            alpha=0.5
-            )
-    for i in range(len(le_pts_lstab[0])):
-        ax.plot(
-            [le_pts_lstab[0][i], te_pts_lstab[0][i]], 
-            [le_pts_lstab[1][i], te_pts_lstab[1][i]],
-            [le_pts_lstab[2][i], te_pts_lstab[2][i]],
-            'g--',
-            alpha=0.5
-            )
+    # # Plot chord lines
+    # for i in range(len(le_pts[0])):
+    #     ax.plot(
+    #         [le_pts[0][i], te_pts[0][i]], 
+    #         [le_pts[1][i], te_pts[1][i]],
+    #         [le_pts[2][i], te_pts[2][i]],
+    #         'g--',
+    #         alpha=0.5
+    #         )
+    # for i in range(len(le_pts_rstab[0])):
+    #     ax.plot(
+    #         [le_pts_rstab[0][i], te_pts_rstab[0][i]], 
+    #         [le_pts_rstab[1][i], te_pts_rstab[1][i]],
+    #         [le_pts_rstab[2][i], te_pts_rstab[2][i]],
+    #         'g--',
+    #         alpha=0.5
+    #         )
+    # for i in range(len(le_pts_lstab[0])):
+    #     ax.plot(
+    #         [le_pts_lstab[0][i], te_pts_lstab[0][i]], 
+    #         [le_pts_lstab[1][i], te_pts_lstab[1][i]],
+    #         [le_pts_lstab[2][i], te_pts_lstab[2][i]],
+    #         'g--',
+    #         alpha=0.5
+    #         )
 
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y (Span)')
-    ax.set_zlabel('Z')
-    ax.set_title("SplineSurface Visualization")
-    ax.legend()
-    ax.axis('equal')
-    plt.show()
+    # ax.set_xlabel('X')
+    # ax.set_ylabel('Y (Span)')
+    # ax.set_zlabel('Z')
+    # ax.set_title("SplineSurface Visualization")
+    # ax.legend()
+    # ax.axis('equal')
+    # plt.show()
 
     the_plane = Model([wing_surface, rstab_surface, lstab_surface], 'FEET', 0)
 
@@ -325,42 +322,58 @@ def run_vsp(
 
 
 if __name__ == "__main__":
-    the_model, avl_file, vsp_file = define_and_generate_BWB(
-        "temp/temp.txt",
-        nose_length=15, # (feet)
-        fuselage_length=100, # front to back length of BWB (feet)
-        fuselage_width=20, # (feet)
-        height_to_width=0.8, #TODO
-        tail_height=8, # (feet)
-        wing_span=120, # (feet)
-        wing_length=40, # (feet)
-        wing_sweep=25, # (degrees)
-        wing_dihedral=1, # (degrees)
-        wing_croot=25, # (feet)
-        wing_taper=0.6, # (unitless)
-        wing_twist=-1, # (degrees/foot)
-        wing_alpha=2, # root incidence (degrees)
-        wing_height=10, # (feet)
-        wing_x=45, # (feet)
-    )
+    fuselage_length_start = 80
+    fuselage_length_end = 120
+    fuselage_length_num = 5
+    fuselage_htw_start = 0.5
+    fuselage_htw_end = 1.3
+    fuselage_htw_num = 5
 
-    _ = vsp_file.save_to_file(Path("temp/test.vsp3"))
+    fuselage_lengths = np.linspace(fuselage_length_start, fuselage_length_end, num=fuselage_length_num)
+    fuselage_htws = np.linspace(fuselage_htw_start, fuselage_htw_end, num=fuselage_htw_num)
+    results = {}
+    
+    for combo in product(fuselage_lengths, fuselage_htws):
+        the_model, avl_file, vsp_file = define_and_generate_BWB(
+            "temp/temp.txt",
+            nose_length=15, # (feet)
+            fuselage_length=combo[0], # front to back length of BWB (feet)
+            fuselage_width=20, # (feet)
+            height_to_width=combo[1], #TODO
+            tail_height=8, # (feet)
+            wing_span=120, # (feet)
+            wing_length=40, # (feet)
+            wing_sweep=25, # (degrees)
+            wing_dihedral=1, # (degrees)
+            wing_croot=25, # (feet)
+            wing_taper=0.6, # (unitless)
+            wing_twist=-1, # (degrees/foot)
+            wing_alpha=2, # root incidence (degrees)
+            wing_height=4, # (feet)
+            wing_x=45, # (feet)
+        )
 
-    CLtot, CDtot = run_vsp(
-        vsp_file,
-        0,
-        10,
-        1,
-        "temp/",
-        0,
-        0,
-        0,
-        0.74,
-        1,
-        1,
-        8e7,
-        8e7,
-        1,
-        False
-    )
-    print(CLtot, CDtot)
+        CLtot, CDtot = run_vsp(
+            vsp_file,
+            0,
+            10,
+            5,
+            "temp/",
+            0,
+            0,
+            0,
+            0.74,
+            1,
+            1,
+            8e7,
+            8e7,
+            1,
+            False
+        )
+
+        print(CLtot, CDtot)
+
+        results[combo] = [CLtot, CDtot]
+
+    df = pd.DataFrame(results)
+    df.to_csv("temp/BWB_coefficients.CSV")
