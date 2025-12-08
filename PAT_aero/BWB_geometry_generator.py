@@ -10,7 +10,7 @@ def define_and_generate_BWB(
     nose_length: float = 15, # (feet)
     fuselage_length: float = 100, # front to back length of BWB (feet)
     fuselage_width: float = 20, # (feet)
-    height_to_width: float = 1, #TODO
+    height_to_width: float = 1, # (unitless)
     tail_height: float = 8, # (feet)
     wing_span: float = 120, # (feet)
     wing_length: float = 40, # (feet)
@@ -22,11 +22,11 @@ def define_and_generate_BWB(
     wing_alpha: float = 2, # root incidence (degrees)
     wing_height: float = 10, # (feet)
     wing_x: float = 45, # (feet)
-    stabilizer_cant = 20, # (degrees)
-    stabilizer_croot = 10, # (feet)
-    stabilizer_taper = 0.6, # (unitless)
-    stabilizer_length = 8, # (degrees/foot)
-    stabilizer_sweep = 15
+    stabilizer_cant: float = 25, # (degrees)
+    stabilizer_croot: float = 10, # (feet)
+    stabilizer_taper: float = 0.6, # (unitless)
+    stabilizer_length: float = 12, # (feet)
+    stabilizer_sweep: float = 15, # (degrees)
 ):
     """Generate a BWB aircraft geometry based on given parameters."""
 
@@ -46,6 +46,11 @@ def define_and_generate_BWB(
     print(f"  Wing alpha: {wing_alpha} deg")
     print(f"  Wing height: {wing_height} ft")
     print(f"  Wing x: {wing_x} ft")
+    print(f"  Stabilizer cant: {stabilizer_cant} deg")
+    print(f"  Stabilizer croot: {stabilizer_croot} ft")
+    print(f"  Stabilizer taper: {stabilizer_taper}")
+    print(f"  Stabilizer span: {stabilizer_length} ft")
+    print(f"  Stabilizer sweep: {stabilizer_sweep} deg")
 
     deg2rad = np.pi/180
 
@@ -55,34 +60,39 @@ def define_and_generate_BWB(
     wing_dihedral *= deg2rad
     wing_alpha *= deg2rad
     wing_twist *= deg2rad/wing_length
+    stabilizer_cant *= deg2rad
+    stabilizer_sweep *= deg2rad
     
-
-    pt_tip = Point(0, 0, 0, "tip")
-    pt_flank = Point(nose_length, fuselage_width/2 + 2, 0, "flank")
+    pt_tip = Point(
+        0,
+        0,
+        0,
+        "tip")
+    pt_flank = Point(
+        nose_length,
+        fuselage_width/2 + 2,
+        0,
+        "flank")
     pt_wingroot_le = Point(
         wing_x,
         max(fuselage_width/2 + 15, wing_span/2-wing_length),
         wing_height,
         "wing")
-
     pt_wingtip_le = Point(
         pt_wingroot_le.x + wing_length*np.sin(wing_sweep),
         pt_wingroot_le.y + wing_length,
         pt_wingroot_le.z + wing_length*np.sin(wing_dihedral),
         "wingtip_le")
-
     pt_wingtip_te = Point(
         pt_wingroot_le.x + wing_length*np.sin(wing_sweep) + wing_croot*wing_taper*np.cos(wing_alpha+wing_length*wing_twist),
         pt_wingroot_le.y + wing_length,
         pt_wingroot_le.z + wing_length*np.sin(wing_dihedral) + wing_croot*wing_taper*np.sin(wing_alpha+wing_length*wing_twist),
         "wingtip_te")
-
     pt_wingroot_te = Point(
         pt_wingroot_le.x + wing_croot*np.cos(wing_alpha), 
         pt_wingroot_le.y, 
         pt_wingroot_le.z + wing_croot*np.sin(wing_alpha), 
         "wingroot_te")
-
     pt_tail = Point(
         pt_tip.x + fuselage_length,
         pt_tip.y,
@@ -90,32 +100,25 @@ def define_and_generate_BWB(
         "tail")
 
     pt_stabroot_le = Point(
-        pt_tail.x - 15,
+        pt_tail.x - 25,
         pt_tail.y + 10,
         pt_tail.z,
-        "stabroot_le"
-    )
-
+        "stabroot_le")
     pt_stabtip_le = Point(
         pt_stabroot_le.x + stabilizer_length*np.sin(stabilizer_sweep),
         pt_stabroot_le.y + stabilizer_length*np.sin(stabilizer_cant),
         pt_stabroot_le.z + stabilizer_length*np.cos(stabilizer_cant),
-        "stabtip_le"
-    )
-
+        "stabtip_le")
     pt_stabtip_te = Point(
         pt_stabtip_le.x + stabilizer_croot*stabilizer_taper,
         pt_stabtip_le.y,
         pt_stabtip_le.z,
-        "stabtip_te"
-    )
-
+        "stabtip_te")
     pt_stabroot_te = Point(
         pt_stabroot_le.x + stabilizer_croot,
         pt_stabroot_le.y,
         pt_stabroot_le.z,
-        "stabroot_te"
-    )
+        "stabroot_te")
 
 
     wing_points = [
@@ -132,14 +135,12 @@ def define_and_generate_BWB(
         pt_wingroot_le.reflect_y(),
         pt_flank.reflect_y(),
         ]
-
     rstab_points = [
         pt_stabroot_le,
         pt_stabtip_le,
         pt_stabtip_te,
         pt_stabroot_te
     ]
-
     lstab_points = [
         pt_stabroot_le.reflect_y(),
         pt_stabtip_le.reflect_y(),
@@ -183,7 +184,7 @@ def define_and_generate_BWB(
     ax.axis('equal')
     ax.legend()
 
-    # Create the wings.
+    # Create the wings
     wing_surface = SplineSurface(name="Wing", loop=wing_loop, default_section_density=0.35)
     rstab_surface = SplineSurface(name="R_Stab", loop=rstab_loop, default_section_density=0.35)
     lstab_surface = SplineSurface(name="L_Stab", loop=lstab_loop, default_section_density=0.35)
