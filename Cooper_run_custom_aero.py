@@ -1,10 +1,8 @@
 """Run the a mission with a simple external component that computes aircraft lift and drag."""
 
-from copy import deepcopy
-
 import aviary.api as av
-from PAT_aero_builder import PATAeroBuilder
-from aviary.models.missions.two_dof_default import phase_info
+from PAT_aero.PAT_aero_builder import PATAeroBuilder
+from two_dof_cooper import phase_info
 
 
 # Add custom aero.
@@ -23,7 +21,7 @@ if __name__ == '__main__':
 
     # Load aircraft and options data from user
     # Allow for user overrides here
-    prob.load_inputs('models/aircraft/blended_wing_body/generic_BWB_GASP.csv', phase_info)
+    prob.load_inputs('Cooper_BWB_GASP.csv', phase_info)
 
     prob.check_and_preprocess_inputs()
 

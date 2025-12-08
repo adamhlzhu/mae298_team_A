@@ -6,22 +6,22 @@ from PAT.utils import Airfoil
 
 
 def define_and_generate_BWB(
-    junk_dir,
-    nose_length = 15, # (feet)
-    fuselage_length = 100, # front to back length of BWB (feet)
-    fuselage_width = 20, # (feet)
-    height_to_width = 1, #TODO
-    tail_height = 8, # (feet)
-    wing_span = 120, # (feet)
-    wing_length = 40, # (feet)
-    wing_sweep = 25, # (degrees)
-    wing_dihedral = 1, # (degrees)
-    wing_croot = 25, # (feet)
-    wing_taper = 0.6, # (unitless)
-    wing_twist = -1, # (degrees/foot)
-    wing_alpha = 2, # root incidence (degrees)
-    wing_height = 10, # (feet)
-    wing_x = 45, # (feet)
+    junk_dir: Path,
+    nose_length: float = 15, # (feet)
+    fuselage_length: float = 100, # front to back length of BWB (feet)
+    fuselage_width: float = 20, # (feet)
+    height_to_width: float = 1, #TODO
+    tail_height: float = 8, # (feet)
+    wing_span: float = 120, # (feet)
+    wing_length: float = 40, # (feet)
+    wing_sweep: float = 25, # (degrees)
+    wing_dihedral: float = 1, # (degrees)
+    wing_croot: float = 25, # (feet)
+    wing_taper: float = 0.6, # (unitless)
+    wing_twist: float = -1, # (degrees/foot)
+    wing_alpha: float = 2, # root incidence (degrees)
+    wing_height: float = 10, # (feet)
+    wing_x: float = 45, # (feet)
 ):
     print("Generating model with the following parameters:")
     print(f"  Nose length: {nose_length} ft")
