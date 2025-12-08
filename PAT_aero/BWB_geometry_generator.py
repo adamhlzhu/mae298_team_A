@@ -254,7 +254,7 @@ def define_and_generate_BWB(
     # ax.axis('equal')
     # plt.show()
 
-    the_plane = Model([wing_surface, rstab_surface, lstab_surface], 'FEET', 0)
+    the_plane = Model([wing_surface], 'FEET', 0) #, rstab_surface, lstab_surface], 'FEET', 0)
 
     avl_file = the_plane.get_AvlFile()
     # avl_file.save_to_file(Path("PAT_aero/data/test.avl"))
@@ -329,17 +329,26 @@ if __name__ == "__main__":
     fuselage_htw_end = 1.3
     fuselage_htw_num = 5
 
+    wing_span_start = 100
+    wing_span_end = 150
+    wing_span_num = 5
+    wing_sweep_start = 20
+    wing_sweep_end = 30
+    wing_sweep_num = 5
+
     fuselage_lengths = np.linspace(fuselage_length_start, fuselage_length_end, num=fuselage_length_num)
     fuselage_htws = np.linspace(fuselage_htw_start, fuselage_htw_end, num=fuselage_htw_num)
+    wing_spans = np.linspace(wing_span_start, wing_span_end, num=wing_span_num)
+    wing_sweeps = np.linspace(wing_sweep_start, wing_sweep_end, num=wing_sweep_num)
     results = {}
-    
+
     for combo in product(fuselage_lengths, fuselage_htws):
         the_model, avl_file, vsp_file = define_and_generate_BWB(
             "temp/temp.txt",
             nose_length=15, # (feet)
             fuselage_length=combo[0], # front to back length of BWB (feet)
             fuselage_width=20, # (feet)
-            height_to_width=combo[1], #TODO
+            height_to_width=combo[1], # ratio
             tail_height=8, # (feet)
             wing_span=120, # (feet)
             wing_length=40, # (feet)
@@ -376,4 +385,49 @@ if __name__ == "__main__":
         results[combo] = [CLtot, CDtot]
 
     df = pd.DataFrame(results)
-    df.to_csv("temp/BWB_coefficients.CSV")
+    df.to_csv("temp/BWB_coefficients_length_ratio.CSV")
+    
+    for combo in product(wing_spans, wing_sweeps):
+        the_model, avl_file, vsp_file = define_and_generate_BWB(
+            "temp/temp.txt",
+            nose_length=15, # (feet)
+            fuselage_length=100, # front to back length of BWB (feet)
+            fuselage_width=20, # (feet)
+            height_to_width=0.8, # ratio
+            tail_height=8, # (feet)
+            wing_span=combo[0], # (feet)
+            wing_length=40, # (feet)
+            wing_sweep=combo[1], # (degrees)
+            wing_dihedral=1, # (degrees)
+            wing_croot=25, # (feet)
+            wing_taper=0.6, # (unitless)
+            wing_twist=-1, # (degrees/foot)
+            wing_alpha=2, # root incidence (degrees)
+            wing_height=4, # (feet)
+            wing_x=45, # (feet)
+        )
+
+        CLtot, CDtot = run_vsp(
+            vsp_file,
+            0,
+            10,
+            5,
+            "temp/",
+            0,
+            0,
+            0,
+            0.74,
+            1,
+            1,
+            8e7,
+            8e7,
+            1,
+            False
+        )
+
+        print(CLtot, CDtot)
+
+        results[combo] = [CLtot, CDtot]
+
+    df = pd.DataFrame(results)
+    df.to_csv("temp/BWB_coefficients_span_sweep.CSV")
