@@ -2,10 +2,10 @@
  "Problem": "BWB_Combined_all_5_engine",
  "Script": "c:/Users/BIRD_Huanglun_Zhu/Documents/GitHub/mae298_team_A/BWB_Combined_all_5_engine.py",
  "Optimizer": "pyOptSparse_IPOPT",
- "Number of driver iterations": 239,
- "Number of model evals": 240,
- "Number of deriv evals": 185,
- "Wall clock run time": "00 hours 02 minutes 34 seconds 406.2 milliseconds",
+ "Number of driver iterations": 50,
+ "Number of model evals": 51,
+ "Number of deriv evals": 48,
+ "Wall clock run time": "00 hours 00 minutes 40 seconds 99.5 milliseconds",
  "Exit status": "SUCCESS",
- "Report generation date and time": "2025-12-02 13:26:56 "
+ "Report generation date and time": "2025-12-08 11:47:50 "
 }

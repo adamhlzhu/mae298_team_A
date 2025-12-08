@@ -74,11 +74,12 @@ def build_coupled_problem():
         ref=25000.0
     )
 
+    # Material properties for Aluminum 7075-T6: https://asm.matweb.com/search/specificmaterial.asp?bassnum=ma7075t6
     aluminum = {
-        "E": 70e9,
-        "G": 27e9,
-        "yield": 300e6,
-        "mrho": 2800.0,
+        "E": 71.7e9,     # Pa
+        "G": 26.9e9,     # Pa
+        "yield": 503e6,  # Pa
+        "mrho": 2810.0,  # kg/m^3
     }
 
     avi_prob.model.add_subsystem(
@@ -93,6 +94,7 @@ def build_coupled_problem():
         "pre_mission.regression_propulsion.eng_ivc.propulsion:T_rated",
         lower=5000.0,
         upper=40000.0,
+        ref=18000.0,
     )
 
     avi_prob.model.connect(

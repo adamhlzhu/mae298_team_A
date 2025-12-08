@@ -158,7 +158,7 @@ phase_info = {
             'num_segments': 3,
             'order': 3,
             'EAS_target': (270, 'kn'),
-            'mach_cruise': 0.75,
+            'mach_cruise': 0.74,
             'target_mach': False,
             'required_available_climb_rate': (0.1, 'ft/min'),
             'time_duration_bounds': ((200, 17_000), 's'),
@@ -186,7 +186,7 @@ phase_info = {
         'subsystem_options': {'core_aerodynamics': {'method': 'cruise'}},
         'user_options': {
             #'alt_cruise': (37.5e3, 'ft'),
-            'mach_cruise': 0.75,
+            'mach_cruise': 0.74,
         },
         'initial_guesses': {
             # [Initial mass, delta mass] for special cruise phase.
@@ -194,7 +194,7 @@ phase_info = {
             'initial_distance': (200.0e3, 'ft'),
             'initial_time': (1516.0, 's'),
             'altitude': (37.5e3, 'ft'),
-            'mach': (0.75, 'unitless'),
+            'mach': (0.74, 'unitless'),
         },
     },
     'desc1': {
@@ -203,7 +203,7 @@ phase_info = {
             'num_segments': 3,
             'order': 3,
             'EAS_limit': (350, 'kn'),
-            'mach_cruise': 0.8,
+            'mach_cruise': 0.74,
             'input_speed_type': SpeedType.MACH,
             'time_duration_bounds': ((300.0, 900.0), 's'),
             'time_duration_ref': (1000, 's'),

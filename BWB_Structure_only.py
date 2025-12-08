@@ -40,11 +40,12 @@ def build_coupled_problem():
     avi_prob.model.add_design_var("aircraft:wing:aspect_ratio", lower=7.0, upper=14.0)
     avi_prob.model.add_design_var("aircraft:wing:taper_ratio", lower=0.25, upper=0.45)
 
+    # Material properties for Aluminum 7075-T6: https://asm.matweb.com/search/specificmaterial.asp?bassnum=ma7075t6
     aluminum = {
-        "E": 70e9,
-        "G": 27e9,
-        "yield": 300e6,
-        "mrho": 2800.0,
+        "E": 71.7e9,     # Pa
+        "G": 26.9e9,     # Pa
+        "yield": 503e6,  # Pa
+        "mrho": 2810.0,  # kg/m^3
     }
 
     avi_prob.model.add_subsystem(

@@ -1,17 +1,17 @@
 # MISSION SUMMARY
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Total Fuel Burn | 2727.3 | lbm |
-| Total Fuel Capacity | 3262.56 | lbm |
-| Excess Fuel Capacity | -1.31e-09 | lbm |
-| Total Time | 52.76 | min |
+| Total Fuel Burn | 2702.07 | lbm |
+| Total Fuel Capacity | 3234.81 | lbm |
+| Excess Fuel Capacity | 4.08e-09 | lbm |
+| Total Time | 53.43 | min |
 | Total Ground Distance | 350.0 | nmi |
 
 # MISSION SEGMENTS
 ## groundroll
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 51.54 | lbm |
+| Fuel Burn | 51.52 | lbm |
 | Elapsed Time | 0.271 | min |
 | Ground Distance | 0.248 | nmi |
 
@@ -25,7 +25,7 @@
 ## ascent
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 109.07 | lbm |
+| Fuel Burn | 109.02 | lbm |
 | Elapsed Time | 0.517 | min |
 | Ground Distance | 1.67 | nmi |
 
@@ -39,34 +39,34 @@
 ## climb1
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 90.92 | lbm |
+| Fuel Burn | 90.93 | lbm |
 | Elapsed Time | 0.5 | min |
 | Ground Distance | 2.34 | nmi |
 
 ## climb2
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 1264.88 | lbm |
-| Elapsed Time | 11.86 | min |
-| Ground Distance | 80.41 | nmi |
+| Fuel Burn | 1261.23 | lbm |
+| Elapsed Time | 11.87 | min |
+| Ground Distance | 79.95 | nmi |
 
 ## cruise
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 872.8 | lbm |
-| Elapsed Time | 20.63 | min |
-| Ground Distance | 145.95 | nmi |
+| Fuel Burn | 839.59 | lbm |
+| Elapsed Time | 19.85 | min |
+| Ground Distance | 140.41 | nmi |
 
 ## desc1
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 143.53 | lbm |
-| Elapsed Time | 10.7 | min |
-| Ground Distance | 82.1 | nmi |
+| Fuel Burn | 155.22 | lbm |
+| Elapsed Time | 12.13 | min |
+| Ground Distance | 88.1 | nmi |
 
 ## desc2
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 181.66 | lbm |
+| Fuel Burn | 181.67 | lbm |
 | Elapsed Time | 8.23 | min |
 | Ground Distance | 37.13 | nmi |

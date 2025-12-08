@@ -1,23 +1,23 @@
 # Mass estimation: GASP-derived relations
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| aircraft:wing:mass | 5838.09 | lbm |
-| aircraft:horizontal_tail:mass | 0.888 | lbm |
-| aircraft:vertical_tail:mass | 700.23 | lbm |
+| aircraft:wing:mass | 6044.61 | lbm |
+| aircraft:horizontal_tail:mass | 0.899 | lbm |
+| aircraft:vertical_tail:mass | 699.08 | lbm |
 | aircraft:fins:mass | Not Found in Model | unknown |
 | aircraft:canard:mass | Not Found in Model | unknown |
-| aircraft:fuselage:mass | 26982.04 | lbm |
+| aircraft:fuselage:mass | 26989.23 | lbm |
 | aircraft:landing_gear:nose_gear_mass | Not Found in Model | unknown |
-| aircraft:landing_gear:main_gear_mass | 4774.47 | lbm |
+| aircraft:landing_gear:main_gear_mass | 4783.5 | lbm |
 | aircraft:paint:mass | Not Found in Model | unknown |
-| aircraft:nacelle:mass | 109.32 | lbm |
-| aircraft:design:structure_mass | 40586.59 | lbm |
-| aircraft:propulsion:total_engine_mass | 4994.37 | lbm |
+| aircraft:nacelle:mass | 109.53 | lbm |
+| aircraft:design:structure_mass | 40807.29 | lbm |
+| aircraft:propulsion:total_engine_mass | 4969.33 | lbm |
 | aircraft:propulsion:total_thrust_reversers_mass | Not Found in Model | unknown |
 | aircraft:propulsion:total_misc_mass | Not Found in Model | unknown |
-| aircraft:fuel:fuel_system_mass | 115.84 | lbm |
-| aircraft:propulsion:mass | 1731.52 | lbm |
-| aircraft:wing:surface_ctrl_mass | 1711.93 | lbm |
+| aircraft:fuel:fuel_system_mass | 114.41 | lbm |
+| aircraft:propulsion:mass | 1715.32 | lbm |
+| aircraft:wing:surface_ctrl_mass | 1726.73 | lbm |
 | aircraft:apu:mass | 710.0 | lbm |
 | aircraft:instruments:mass | Not Found in Model | unknown |
 | aircraft:hydraulics:mass | Not Found in Model | unknown |
@@ -35,11 +35,11 @@
 | aircraft:propulsion:total_engine_oil_mass | Not Found in Model | unknown |
 | aircraft:crew_and_payload:passenger_service_mass | Not Found in Model | unknown |
 | aircraft:crew_and_payload:cargo_container_mass | Not Found in Model | unknown |
-| aircraft:design:operating_mass | 71260.9 | lbm |
+| aircraft:design:operating_mass | 71502.22 | lbm |
 | aircraft:crew_and_payload:passenger_mass | Not Found in Model | unknown |
 | aircraft:crew_and_payload:passenger_payload_mass | 33750.0 | lbm |
 | aircraft:crew_and_payload:cargo_mass | 0 | lbm |
 | aircraft:design:zero_fuel_mass | Not Found in Model | unknown |
-| mission:design:fuel_mass | 3008.7 | lbm |
-| mission:summary:total_fuel_mass | 3008.7 | lbm |
-| mission:summary:gross_mass | 108019.6 | lbm |
+| mission:design:fuel_mass | 2971.74 | lbm |
+| mission:summary:total_fuel_mass | 2971.74 | lbm |
+| mission:summary:gross_mass | 108223.96 | lbm |

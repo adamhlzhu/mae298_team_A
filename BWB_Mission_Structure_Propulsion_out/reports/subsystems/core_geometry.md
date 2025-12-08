@@ -2,9 +2,9 @@
 ## Wing
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| aircraft:wing:area | 1979.54 | ft**2 |
-| aircraft:wing:span | 146.99 | ft |
-| aircraft:wing:aspect_ratio | 10.91 | - |
+| aircraft:wing:area | 1983.04 | ft**2 |
+| aircraft:wing:span | 149.95 | ft |
+| aircraft:wing:aspect_ratio | 11.34 | - |
 | aircraft:wing:sweep | 30.0 | deg |
 
 ## Empennage
@@ -12,7 +12,7 @@
 | Variable Name | Value | Units |
 | :- | :- | :- |
 | aircraft:horizontal_tail:area | 0.00108 | ft**2 |
-| aircraft:vertical_tail:area | 156.23 | ft**2 |
+| aircraft:vertical_tail:area | 156.51 | ft**2 |
 
 ## Fuselage
 | Variable Name | Value | Units |

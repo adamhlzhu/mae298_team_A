@@ -63,6 +63,7 @@ prob.model.add_design_var(
     "pre_mission.regression_propulsion.eng_ivc.propulsion:T_rated",
     lower=5000.0,
     upper=40000.0,
+    ref=18000.0,
 )
 
 prob.model.connect(

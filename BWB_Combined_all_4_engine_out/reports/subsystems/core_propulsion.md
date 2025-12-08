@@ -2,7 +2,7 @@
 | Variable Name | Value | Units |
 | :- | :- | :- |
 | aircraft:propulsion:total_num_engines | 4 | - |
-| aircraft:propulsion:total_scaled_sls_thrust | 27919.59 | lbf |
+| aircraft:propulsion:total_scaled_sls_thrust | 27779.62 | lbf |
 
 ## Engines
 ### turbofan_gasp_bwb
