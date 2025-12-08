@@ -3,7 +3,7 @@ import openmdao.api as om
 
 from aviary.subsystems.aerodynamics.aero_common import DynamicPressure, ReynoldsNumber
 from aviary.variable_info.variables import Aircraft, Dynamic
-from PAT_subsystems import Coefficients, LiftAndDrag
+from .PAT_subsystems import Coefficients, LiftAndDrag
 
 
 class PATAeroGroup(om.Group):

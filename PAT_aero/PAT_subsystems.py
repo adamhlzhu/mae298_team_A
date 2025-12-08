@@ -4,7 +4,7 @@ import openmdao.api as om
 from aviary.variable_info.functions import add_aviary_input, add_aviary_output
 from aviary.variable_info.variables import Aircraft, Dynamic
 
-from BWB_geometry_generator import define_and_generate_BWB, run_avl, run_vsp
+from .BWB_geometry_generator import define_and_generate_BWB, run_avl, run_vsp
 
 
 class Coefficients(om.ExplicitComponent):

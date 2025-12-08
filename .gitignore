@@ -1,2 +1,5 @@
 *_out/
 __pycache__/
+temp/
+software/
+*.log

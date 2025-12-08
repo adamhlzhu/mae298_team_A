@@ -1,8 +1,8 @@
 """Builder for a simple drag calculation that replaces Aviary's calculation."""
 
-from PAT_aero_group import PATAeroGroup
+from .PAT_aero_group import PATAeroGroup
 from aviary.subsystems.subsystem_builder_base import SubsystemBuilderBase
-from aviary.variable_info.variables import Aircraft, Dynamic
+from aviary.variable_info.variables import Dynamic
 
 
 class PATAeroBuilder(SubsystemBuilderBase):

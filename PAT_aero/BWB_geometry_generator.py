@@ -127,8 +127,7 @@ def define_and_generate_BWB(
     # Create the main wing.
     wing_surface = SplineSurface(name="Wing", loop=loop, default_section_density=0.35)
     chord = np.sqrt(fuselage_length**2 + tail_height**2)
-    print(chord, fuselage_width*height_to_width/(0.12*chord))
-    naca2412 = Path(r"PAT\PAT\airfoils\2412_selig.dat")
+    naca2412 = Path('airfoils/NACA2412.dat')
     body_af = Airfoil(naca2412, thickness_scale=fuselage_width*height_to_width/(0.12*chord)).invert()
     wall_af = Airfoil(naca2412, thickness_scale=fuselage_width*height_to_width/(0.12*chord)).invert()
     wing_af = Airfoil(naca2412, thickness_scale=0.9)
@@ -188,13 +187,13 @@ def define_and_generate_BWB(
     # avl_file.save_to_file(Path("PAT_aero/data/test.avl"))
 
     vsp_file = the_plane.get_VspFile(Path(junk_dir), 0.8)
-    vsp_file.save_to_file(Path("PAT_aero/data/test.vsp3"))
+    vsp_file.save_to_file(Path("temp/test.vsp3"))
 
     return the_plane, avl_file, vsp_file
     
 
 def run_avl(avl_file, alphas, betas, mach):
-    avl_out = avl_file.run_avl(alphas, betas, Path("PAT/software/avl.exe"), Path("PAT_aero/data/temp"), mach)
+    avl_out = avl_file.run_avl(alphas, betas, Path("software/avl.exe"), Path("temp/temp.txt"), mach)
     print(avl_out)
 
 def run_vsp(
@@ -251,7 +250,7 @@ def run_vsp(
 
 if __name__ == "__main__":
     define_and_generate_BWB(
-        "PAT_aero/data/temp",
+        "temp/temp.txt",
     )
     # run_vsp()
     # print(CLtot, CDtot)
