@@ -1,72 +1,72 @@
 # MISSION SUMMARY
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Total Fuel Burn | 3016.41 | lbm |
-| Total Fuel Capacity | 3690.84 | lbm |
-| Excess Fuel Capacity | 2.27e-12 | lbm |
-| Total Time | 53.85 | min |
+| Total Fuel Burn | 2532.16 | lbm |
+| Total Fuel Capacity | 2971.19 | lbm |
+| Excess Fuel Capacity | 1.87e-07 | lbm |
+| Total Time | 53.75 | min |
 | Total Ground Distance | 350.0 | nmi |
 
 # MISSION SEGMENTS
 ## groundroll
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 50.58 | lbm |
-| Elapsed Time | 0.188 | min |
-| Ground Distance | 0.167 | nmi |
+| Fuel Burn | 48.86 | lbm |
+| Elapsed Time | 0.364 | min |
+| Ground Distance | 0.328 | nmi |
 
 ## rotation
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 11.23 | lbm |
-| Elapsed Time | 0.0396 | min |
-| Ground Distance | 0.0744 | nmi |
+| Fuel Burn | 7.0 | lbm |
+| Elapsed Time | 0.0496 | min |
+| Ground Distance | 0.0909 | nmi |
 
 ## ascent
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 105.5 | lbm |
-| Elapsed Time | 0.352 | min |
-| Ground Distance | 1.13 | nmi |
+| Fuel Burn | 98.5 | lbm |
+| Elapsed Time | 0.663 | min |
+| Ground Distance | 2.05 | nmi |
 
 ## accel
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 5.11 | lbm |
-| Elapsed Time | 0.0167 | min |
-| Ground Distance | 0.0692 | nmi |
+| Fuel Burn | 15.42 | lbm |
+| Elapsed Time | 0.102 | min |
+| Ground Distance | 0.411 | nmi |
 
 ## climb1
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 269.54 | lbm |
-| Elapsed Time | 0.989 | min |
-| Ground Distance | 4.35 | nmi |
+| Fuel Burn | 63.77 | lbm |
+| Elapsed Time | 0.5 | min |
+| Ground Distance | 2.38 | nmi |
 
 ## climb2
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 1030.77 | lbm |
-| Elapsed Time | 6.65 | min |
-| Ground Distance | 44.17 | nmi |
+| Fuel Burn | 1761.92 | lbm |
+| Elapsed Time | 24.69 | min |
+| Ground Distance | 168.39 | nmi |
 
 ## cruise
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 1000.46 | lbm |
-| Elapsed Time | 22.76 | min |
-| Ground Distance | 161.03 | nmi |
+| Fuel Burn | 313.38 | lbm |
+| Elapsed Time | 8.16 | min |
+| Ground Distance | 57.7 | nmi |
 
 ## desc1
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 236.27 | lbm |
-| Elapsed Time | 13.08 | min |
-| Ground Distance | 94.92 | nmi |
+| Fuel Burn | 104.62 | lbm |
+| Elapsed Time | 11.62 | min |
+| Ground Distance | 84.35 | nmi |
 
 ## desc2
 | Variable Name | Value | Units |
 | :- | :- | :- |
-| Fuel Burn | 306.96 | lbm |
-| Elapsed Time | 9.777 | min |
-| Ground Distance | 44.1 | nmi |
+| Fuel Burn | 118.69 | lbm |
+| Elapsed Time | 7.6 | min |
+| Ground Distance | 34.31 | nmi |
