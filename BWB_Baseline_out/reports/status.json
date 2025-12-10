@@ -1,0 +1,11 @@
+{
+ "Problem": "BWB_Baseline",
+ "Script": "c:/Users/BIRD_Huanglun_Zhu/Documents/GitHub/mae298_team_A/BWB_Baseline.py",
+ "Optimizer": "pyOptSparse_IPOPT",
+ "Number of driver iterations": 34,
+ "Number of model evals": 35,
+ "Number of deriv evals": 32,
+ "Wall clock run time": "00 hours 00 minutes 25 seconds 9.1 milliseconds",
+ "Exit status": "SUCCESS",
+ "Report generation date and time": "2025-12-08 10:21:51 "
+}

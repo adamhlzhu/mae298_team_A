@@ -1,0 +1,11 @@
+{
+ "Problem": "BWB_Structure_only",
+ "Script": "c:/Users/BIRD_Huanglun_Zhu/Documents/GitHub/mae298_team_A/BWB_Structure_only.py",
+ "Optimizer": "pyOptSparse_IPOPT",
+ "Number of driver iterations": 35,
+ "Number of model evals": 36,
+ "Number of deriv evals": 27,
+ "Wall clock run time": "00 hours 00 minutes 26 seconds 264.4 milliseconds",
+ "Exit status": "SUCCESS",
+ "Report generation date and time": "2025-12-08 11:17:40 "
+}
